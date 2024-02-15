@@ -170,7 +170,7 @@ do
 
 
             case 4:
-                operat(4);
+                operat( select);
 
                 stops();
 
@@ -194,9 +194,6 @@ do
 while (true);
 
 
-
-
-
 void exitingg()
 {
 
@@ -214,12 +211,12 @@ void exitingg()
 
 
 
-void operat(int secim)
+void operat( int secim)
 {
     Console.ForegroundColor = ConsoleColor.Cyan;
 
     Console.Write("Enter first number ^> ");
-    int num1 = Convert.ToInt32(Console.ReadLine());
+   string num1 =(Console.ReadLine());
     Console.WriteLine();
     Console.ForegroundColor = ConsoleColor.White;
 
@@ -227,35 +224,48 @@ void operat(int secim)
     Console.ForegroundColor = ConsoleColor.DarkCyan;
 
     Console.Write("Enter second number ^> ");
-    int num2 = Convert.ToInt32(Console.ReadLine());
+    string num2 = (Console.ReadLine());
     Console.WriteLine();
     Console.ForegroundColor = ConsoleColor.White;
 
+    int num11;
+    int num22;
+    bool n1 = int.TryParse(num1, out num11);
+    bool n2 = int.TryParse(num2, out num22);
 
-
-    Console.ForegroundColor = ConsoleColor.DarkGreen;
-    switch (secim)
+    if (n1 && n2)
     {
 
-        case 1:
-            Console.WriteLine("Result => " + (num1 + num2));
-            break;
-        case 2:
-            Console.WriteLine("Result => " + (num1 - num2));
+        Console.ForegroundColor = ConsoleColor.DarkGreen;
+        switch (secim)
+        {
 
-            break;
-        case 3:
-            Console.WriteLine("Result => " + (num1 * num2));
+            case 1:
+                Console.WriteLine("Result => " + (num11 + num22));
+                break;
+            case 2:
+                Console.WriteLine("Result => " + (num11 - num22));
 
-            break;
-        case 4:
-            Console.WriteLine("Result => " + (num1 / num2));
+                break;
+            case 3:
+                Console.WriteLine("Result => " + (num11 * num22));
 
-            break;
+                break;
+            case 4:
+                Console.WriteLine("Result => " + (num11 / num22));
+
+                break;
 
 
-        default:
-            break;
+            default:
+                break;
+        }
+        Console.ForegroundColor = ConsoleColor.White;
+    }
+    else
+    {
+        Console.ForegroundColor = ConsoleColor.Magenta;
+        Console.WriteLine("Wrong symbol :(");
     }
     Console.ForegroundColor = ConsoleColor.White;
 
@@ -371,6 +381,60 @@ Thread.Sleep(5000);    //bu ise bize Sleep funksiyasn gorur
 
 
 switch case de while ni biz return ile durdurq
+var compile time isleyr
+buna gore define edmek olmur
+ve biz var ile bisey yaratdqda onun meselen string dise methoddlarin 
+isdifade ede biirik
+var strongly type ni destekleyir yeni bu o demekdir ki biz 
+evvelde var da int saxlamsqsa sonadek int olur
+
+amma dinamikde ise string idise evvel indi int de saxla bilir
+dynamic run time isleyr
+dynamicde ise run time olduqu ucun bunu ede bimmirik
+
+DAta typler 2 yere bonr 
+value type
+reference type 
+GetHashCode deyerin adressin verir
 
 
+ref => datanin orginalnifunksiyay gondermek ucundur , burda deyerei deyise de bilerik deyismeyede 
+out => data define olsa da isleyir cunki gonderiliydiyi yerde mutleq assign edmeliyik
+ve orginala gore isleyir yeni colden gelen bir deyeri doldrub deysir
+int a;
+changeout(out a);
+Console.WriteLine(a);
+void changeout(out int num)
+{
+    num = 13;
+
+}
+
+in=> bu keyword bize bir datani yalniz readonly olaraq funksiyay gondermek ucundr
+yalniz isdifade edmek olar deyismek olmazhhhhh
+clasin obyektn deyse bilmerem amma onun fieldn deyse bilerik
+
+
+
+floatdan int e down casting edsek data itkisi olacaq amma 
+intden double up casing edsek data itkisi olmayacaq
+up casting balacadan boyuye
+down casting kicik hecmli den boyuk hecmlihe
+default olaraq biz int a = 14.45 ; deye bilmerik yeni down casting default yoxdu
+
+string b = "asd";
+int ass = int.Parse(b);
+Console.WriteLine(ass);
+belede typecast edmek olur 
+amma gorunduyu kimi ugurlu olmayacaqdir
+herfi reqeme cevrmek olmr
+ve error atr
+
+
+yalniz int a = (int )15.36;
+ve ya Convert.to methodu ile
+ ama biz up casting ede  bilirik qeyri askar meselen double a = 12;
+ int den doubleye
+
+ 
  */
